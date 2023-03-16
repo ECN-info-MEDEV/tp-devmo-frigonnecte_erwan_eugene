@@ -4,4 +4,9 @@
     <string name="title_calendrier">Calendrier</string>
     <string name="title_recettes">Recettes</string>
     <string name="main">Main</string>
+    <string name="semaine">Semaine</string>
+    <string name="_3_jours">3 jours</string>
+    <string name="_10_jours">10 jours</string>
+    <string name="liste">Liste</string>
+    <string name="carte">Carte</string>
 </resources>

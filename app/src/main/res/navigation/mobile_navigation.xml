@@ -18,7 +18,7 @@
         tools:layout="@layout/fragment_calendrier" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_recettes"
         android:name="edu.devmo.frigonnecte.ui.recettes.RecettesFragment"
         android:label="@string/title_recettes"
         tools:layout="@layout/fragment_recettes" />
