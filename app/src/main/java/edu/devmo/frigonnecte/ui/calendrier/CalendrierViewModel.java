@@ -1,16 +1,16 @@
-package edu.devmo.frigonnecte.ui.dashboard;
+package edu.devmo.frigonnecte.ui.calendrier;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class CalendrierViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public CalendrierViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is calendrier fragment");
     }
 
     public LiveData<String> getText() {

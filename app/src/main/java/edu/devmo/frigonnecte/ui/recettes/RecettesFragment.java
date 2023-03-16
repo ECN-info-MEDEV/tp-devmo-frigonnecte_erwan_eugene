@@ -1,4 +1,4 @@
-package edu.devmo.frigonnecte.ui.home;
+package edu.devmo.frigonnecte.ui.recettes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import edu.devmo.frigonnecte.databinding.FragmentHomeBinding;
+import edu.devmo.frigonnecte.databinding.FragmentRecettesBinding;
 
-public class HomeFragment extends Fragment {
+public class RecettesFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentRecettesBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        RecettesViewModel recettesViewModel =
+                new ViewModelProvider(this).get(RecettesViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentRecettesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textRecettes;
+        recettesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

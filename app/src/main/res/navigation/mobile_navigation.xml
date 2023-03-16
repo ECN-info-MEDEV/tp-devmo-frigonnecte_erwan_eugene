@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_frigo">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="edu.devmo.frigonnecte.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_frigo"
+        android:name="edu.devmo.frigonnecte.ui.frigo.FrigoFragment"
+        android:label="@string/title_frigo"
+        tools:layout="@layout/fragment_frigo" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="edu.devmo.frigonnecte.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_calendrier"
+        android:name="edu.devmo.frigonnecte.ui.calendrier.CalendrierFragment"
+        android:label="@string/title_calendrier"
+        tools:layout="@layout/fragment_calendrier" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="edu.devmo.frigonnecte.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="edu.devmo.frigonnecte.ui.recettes.RecettesFragment"
+        android:label="@string/title_recettes"
+        tools:layout="@layout/fragment_recettes" />
 </navigation>
