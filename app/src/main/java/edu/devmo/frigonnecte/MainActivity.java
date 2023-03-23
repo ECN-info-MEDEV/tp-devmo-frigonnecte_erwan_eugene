@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void selectRecipe(View view) {
         selectedRecipe = ((Button) view).getText().toString();
+        System.out.println("Vous avez cliqué sur :");
         System.out.println(selectedRecipe);
         CalendrierFragment.newInstance().addRecipe("Mardi", "midi", new Recipe("Couscous"));
     }
