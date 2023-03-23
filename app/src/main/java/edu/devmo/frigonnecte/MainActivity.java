@@ -40,6 +40,24 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+<<<<<<< Updated upstream
+=======
+//        // Database
+//        RecipeViewModel mRecipeViewModel;
+//
+//        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+//        final RecipeListAdapter adapter = new RecipeListAdapter(new RecipeListAdapter.RecipeDiff());
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        mRecipeViewModel = new ViewModelProvider(this).get(RecipeViewModel.class);
+//        mRecipeViewModel.getAllRecipes().observe(this, recipes -> {
+//            // Update the cached copy of the words in the adapter.
+//            adapter.submitList(recipes);
+//        });
+//        // End of Database
+
+>>>>>>> Stashed changes
         navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -157,6 +175,13 @@ public class MainActivity extends AppCompatActivity {
 ////            mButton.setText(R.string.open);
 ////            // Set boolean flag to indicate fragment is closed.
 ////            isFragmentDisplayed = false;
+<<<<<<< Updated upstream
 //        }
+=======
+    }
+    public void selectRecipe(View view) {
+        selectedRecipe = ((Button) view).getText().toString();
+        System.out.println(selectedRecipe);
+>>>>>>> Stashed changes
     }
 }
