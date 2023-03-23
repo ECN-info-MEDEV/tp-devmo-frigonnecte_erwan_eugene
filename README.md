@@ -1,6 +1,10 @@
 # tp-devmo-frigonnecte_erwan_eugene
 tp-devmo-frigonnecte_erwan_eugene created by GitHub Classroom
 
+### Note
+
+Il se peut qu'il faille aller dans un fichier DAO pour faire à la main les imports de room avant de pouvoir faire compiler l'application, cela a été notre cas.
+
 ## Fonctionnalités
 
 L'application avait pour but de naviguer entre le frigo, avec la liste des ingrédients, le calendrier, avec les repas prévus, et les recettes. Les autres menus sont affichés dans la barre de navigation, mais ne sont pas accessibles.
