@@ -6,20 +6,26 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import edu.devmo.frigonnecte.databinding.ActivityMainBinding;
 import edu.devmo.frigonnecte.ui.calendrier.CalendrierFragment;
 import edu.devmo.frigonnecte.ui.recettes.RecettesFragment;
+import edu.devmo.frigonnecte.ui.recettes.RecipeListAdapter;
+import edu.devmo.frigonnecte.ui.recettes.RecipeViewModel;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -33,12 +39,29 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private BottomNavigationView navView;
 
+    private String selectedRecipe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Database
+        RecipeViewModel mRecipeViewModel;
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final RecipeListAdapter adapter = new RecipeListAdapter(new RecipeListAdapter.RecipeDiff());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mRecipeViewModel = new ViewModelProvider(this).get(RecipeViewModel.class);
+        mRecipeViewModel.getAllRecipes().observe(this, recipes -> {
+            // Update the cached copy of the words in the adapter.
+            adapter.submitList(recipes);
+        });
+        // End of Database
 
         navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -158,5 +181,8 @@ public class MainActivity extends AppCompatActivity {
 ////            // Set boolean flag to indicate fragment is closed.
 ////            isFragmentDisplayed = false;
 //        }
+    public void selectRecipe(View view) {
+        selectedRecipe = ((Button) view).getText().toString();
+        System.out.println(selectedRecipe);
     }
 }
