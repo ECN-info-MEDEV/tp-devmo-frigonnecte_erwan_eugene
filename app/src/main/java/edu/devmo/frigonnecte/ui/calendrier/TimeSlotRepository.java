@@ -49,7 +49,7 @@ public class TimeSlotRepository {
         final String[] mRecipe = new String[1];
         RecipeRoomDatabase.databaseWriteExecutor.execute(() -> {
             mRecipe[0] = timeSlotDao.getWithDayTime(day, time);
-            System.out.println("TimeSlotRepository, jour obtenu de la base de donnée (recettes ne renvoient que 'Poulet Frite'");
+            System.out.println("TimeSlotRepository, jour obtenu de la base de donnée (recipe ne renvoient que 'Poulet Frite')");
             System.out.println(mRecipe[0]);
             List<String> test = timeSlotDao.getWith();
             System.out.println("Les recettes associées à chaque jour de la base de donnée");
