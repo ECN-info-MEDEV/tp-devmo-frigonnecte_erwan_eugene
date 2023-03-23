@@ -9,12 +9,22 @@ import java.io.Closeable;
 import java.util.List;
 
 public class RecettesViewModel extends ViewModel {
-    private final RecipeRepository mRepository;
-    private final LiveData<List<Recipe>> mAllRecipes;
 
-    public RecettesViewModel (Application application) {
-        super(application);
-        mRepository = new RecipeRepository(application);
-        mAllRecipes = mRepository.getAllRecipes();
+    private final MutableLiveData<String> mText;
+
+//    private final RecipeRepository mRepository;
+//    private final LiveData<List<Recipe>> mAllRecipes;
+
+    public RecettesViewModel () {
+//        super((Closeable) application);
+//        mRepository = new RecipeRepository(application);
+//        mAllRecipes = mRepository.getAllRecipes();
+        mText = new MutableLiveData<>();
+        mText.setValue("This is calendrier fragment");
+    }
+
+
+    public LiveData<String> getText() {
+        return mText;
     }
 }

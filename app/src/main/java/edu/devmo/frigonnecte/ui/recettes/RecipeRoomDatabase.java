@@ -64,11 +64,11 @@ public abstract class RecipeRoomDatabase extends RoomDatabase {
                 TimeSlotDAO dao = INSTANCE.timeSlotDao();
                 dao.deleteAll();
 
-                TimeSlot timeSlot = new TimeSlot("Lundi", "midi", "Poulet frite");
+                TimeSlot timeSlot = new TimeSlot("Lundi", "midi", null);
                 dao.insert(timeSlot);
-                timeSlot = new TimeSlot("Mardi", "midi", "Poulet frite");
+                timeSlot = new TimeSlot("Mardi", "midi", null);
                 dao.insert(timeSlot);
-                timeSlot = new TimeSlot("Mercredi", "midi", "Poulet frite");
+                timeSlot = new TimeSlot("Mercredi", "midi", null);
                 dao.insert(timeSlot);
             });
         }

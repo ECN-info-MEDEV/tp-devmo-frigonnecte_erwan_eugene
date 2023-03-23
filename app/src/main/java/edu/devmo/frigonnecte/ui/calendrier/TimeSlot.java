@@ -13,7 +13,6 @@ public class TimeSlot {
     @ColumnInfo(name = "day")
     private String day;
 
-    @PrimaryKey
     @NonNull
     @ColumnInfo(name = "time")
     private String time;

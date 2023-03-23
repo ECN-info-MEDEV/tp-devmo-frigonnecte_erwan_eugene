@@ -10,8 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Objects;
 
@@ -47,6 +50,21 @@ public class RecettesFragment extends Fragment {
         final TextView textView = binding.textRecettes;
         recettesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
+    }
+
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        // Database
+        RecipeViewModel mRecipeViewModel;
+
+        RecyclerView recyclerView = requireView().findViewById(R.id.recyclerview);
+        final RecipeListAdapter adapter = new RecipeListAdapter(new RecipeListAdapter.RecipeDiff());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mRecipeViewModel = new ViewModelProvider(this).get(RecipeViewModel.class);
+        // Update the cached copy of the words in the adapter.
+        mRecipeViewModel.getAllRecipes().observe(getViewLifecycleOwner(), adapter::submitList);
+        // End of Database
     }
 
     public static RecettesFragment newInstance() {
