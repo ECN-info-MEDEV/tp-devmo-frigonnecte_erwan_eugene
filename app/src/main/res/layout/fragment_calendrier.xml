@@ -43,8 +43,7 @@
         android:layout_marginStart="36dp"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="clickImage"
-        android:src="@drawable/plus"
+        android:onClick="clickImage2"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="102dp" />
 

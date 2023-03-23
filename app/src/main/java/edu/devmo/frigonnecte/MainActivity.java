@@ -1,5 +1,7 @@
 package edu.devmo.frigonnecte;
 
+import static androidx.core.content.PackageManagerCompat.LOG_TAG;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,7 @@ import edu.devmo.frigonnecte.ui.calendrier.CalendrierFragment;
 import edu.devmo.frigonnecte.ui.recettes.RecettesFragment;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     public static final int TEXT_REQUEST = 1;
     private static boolean addToCalendar = false;
@@ -48,6 +51,30 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        Log.d(LOG_TAG, "onStart_second");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "onResume_second");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(LOG_TAG, "onPause_second");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(LOG_TAG, "onStop_second");
+    }
+
     public void clickImage(View view) {
 
         navController.navigate(R.id.navigation_recettes);
@@ -59,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         calendarButton = findViewById(view.getId());
 //
+        Log.i("mon calendrier", String.valueOf(calendarButton.getId()));
 //        addToCalendar = true;
 //
 //        // Instantiate the fragment.
@@ -75,6 +103,35 @@ public class MainActivity extends AppCompatActivity {
         Log.i("oui", "c'est oui");
     }
 
+
+    public void clickImage2(View view) {
+
+//        navController.navigate(R.id.navigation_recettes);
+//        navController.navigateUp();
+//        navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+//        NavigationUI.setupWithNavController(binding.navView, navController);
+
+
+        calendarButton = findViewById(view.getId());
+        calendarButton.setImageResource(R.drawable.entonnoir_dev);
+
+//        Log.i("mon calendrier", String.valueOf(calendarButton.getId()));
+//        addToCalendar = true;
+//
+//        // Instantiate the fragment.
+//        RecettesFragment recettesFragment = RecettesFragment.newInstance();
+//        // Get the FragmentManager and start a transaction.
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager
+//                .beginTransaction();
+//
+//        // Add the SimpleFragment.
+//        fragmentTransaction.replace(R.id.container,
+//                recettesFragment).addToBackStack("searchRecipeFromCalendar").commit();
+
+//        Log.i("oui", "c'est oui");
+    }
     public void addRecette(View view) {
 
         Log.i("le calendrier", String.valueOf(calendarButton.getId()));
