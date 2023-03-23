@@ -32,20 +32,13 @@ public class RecettesFragment extends Fragment {
         RecettesViewModel recettesViewModel =
                 new ViewModelProvider(this).get(RecettesViewModel.class);
 
-//        if (displayVButton) {
-            View rootView = inflater.inflate(R.layout.fragment_recettes, container, false);
-            vButton = (Button)rootView.findViewById(R.id.validate_recettes);
+        View rootView = inflater.inflate(R.layout.fragment_recettes, container, false);
+        vButton = (Button)rootView.findViewById(R.id.validate_recettes);
 
-//            vButton = requireActivity().findViewById(R.id.validate_recettes);
-            Log.i("thisid", String.valueOf(vButton.getText()));
-            vButton.setVisibility(View.VISIBLE);
-            Log.i("mon taff", "c'est fait");
-//        }
+        vButton.setVisibility(View.VISIBLE);
 
         binding = FragmentRecettesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        Log.i("rfrag", "création recettes fragment");
 
         final TextView textView = binding.textRecettes;
         recettesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -66,14 +59,6 @@ public class RecettesFragment extends Fragment {
         mRecipeViewModel.getAllRecipes().observe(getViewLifecycleOwner(), adapter::submitList);
         // End of Database
     }
-
-    public static RecettesFragment newInstance() {
-        Log.i("newnew", "c'est new");
-//        Log.i("thisid", (String) vButton.getText());
-//        vButton.setVisibility(View.VISIBLE);
-        return new RecettesFragment();
-    }
-
 
     @Override
     public void onDestroyView() {

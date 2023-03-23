@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import edu.devmo.frigonnecte.ui.recettes.Recipe;
+
 @Entity(tableName = "timeslot_table")
 public class TimeSlot {
 

@@ -52,9 +52,9 @@ public abstract class RecipeRoomDatabase extends RoomDatabase {
                 RecipeDAO dao = INSTANCE.recipeDao();
                 dao.deleteAll();
 
-                Recipe recipe = new Recipe("Poulet frites");
+                Recipe recipe = new Recipe("Pâtes bolo");
                 dao.insert(recipe);
-                recipe = new Recipe("Couscous");
+                recipe = new Recipe("Soupe aux légumes");
                 dao.insert(recipe);
             });
 
@@ -68,7 +68,7 @@ public abstract class RecipeRoomDatabase extends RoomDatabase {
                 dao.insert(timeSlot);
                 timeSlot = new TimeSlot("Mardi", "midi", null);
                 dao.insert(timeSlot);
-                timeSlot = new TimeSlot("Mercredi", "midi", null);
+                timeSlot = new TimeSlot("Mercredi", "midi", "Pâtes bolo");
                 dao.insert(timeSlot);
             });
         }
