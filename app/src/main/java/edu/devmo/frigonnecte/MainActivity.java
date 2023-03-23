@@ -7,14 +7,20 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import edu.devmo.frigonnecte.databinding.ActivityMainBinding;
+import edu.devmo.frigonnecte.ui.recettes.RecipeListAdapter;
+import edu.devmo.frigonnecte.ui.recettes.RecipeViewModel;
 
 public class MainActivity extends AppCompatActivity {
+    private RecipeViewModel mRecipeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,19 @@ public class MainActivity extends AppCompatActivity {
 
         edu.devmo.frigonnecte.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Database
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final RecipeListAdapter adapter = new RecipeListAdapter(new RecipeListAdapter.RecipeDiff());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mRecipeViewModel = new ViewModelProvider(this).get(RecipeViewModel.class);
+        mRecipeViewModel.getAllRecipes().observe(this, recipes -> {
+            // Update the cached copy of the words in the adapter.
+            adapter.submitList(recipes);
+        });
+        // End of Database
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
