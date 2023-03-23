@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import edu.devmo.frigonnecte.databinding.FragmentCalendrierBinding;
+import edu.devmo.frigonnecte.ui.recettes.RecettesFragment;
 
 public class CalendrierFragment extends Fragment {
 
@@ -27,6 +28,12 @@ public class CalendrierFragment extends Fragment {
         return binding.getRoot();
     }
 
+    public static CalendrierFragment newInstance() {
+        Log.i("newnew", "c'est new, mais calendrier");
+//        Log.i("thisid", (String) vButton.getText());
+//        vButton.setVisibility(View.VISIBLE);
+        return new CalendrierFragment();
+    }
 
     @Override
     public void onDestroyView() {
