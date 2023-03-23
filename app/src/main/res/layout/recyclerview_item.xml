@@ -10,5 +10,6 @@
         android:layout_height="wrap_content"
         android:background="@color/purple_500"
         android:backgroundTint="#673AB7"
-        android:text="Button" />
+        android:text="Button"
+        android:onClick="selectRecipe" />
 </LinearLayout>

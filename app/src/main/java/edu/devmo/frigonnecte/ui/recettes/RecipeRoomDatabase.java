@@ -11,17 +11,21 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Recipe.class}, version = 1, exportSchema = false)
+import edu.devmo.frigonnecte.ui.calendrier.TimeSlot;
+import edu.devmo.frigonnecte.ui.calendrier.TimeSlotDAO;
+
+@Database(entities = {Recipe.class, TimeSlot.class}, version = 1, exportSchema = false)
 public abstract class RecipeRoomDatabase extends RoomDatabase {
 
     public abstract RecipeDAO recipeDao();
+    public abstract TimeSlotDAO timeSlotDao();
 
     private static volatile RecipeRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor =
+    public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static RecipeRoomDatabase getDatabase(final Context context) {
+    public static RecipeRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (RecipeRoomDatabase.class) {
                 if (INSTANCE == null) {
@@ -52,6 +56,20 @@ public abstract class RecipeRoomDatabase extends RoomDatabase {
                 dao.insert(recipe);
                 recipe = new Recipe("Couscous");
                 dao.insert(recipe);
+            });
+
+            databaseWriteExecutor.execute(() -> {
+                // Populate the database in the background.
+                // If you want to start with more words, just add them.
+                TimeSlotDAO dao = INSTANCE.timeSlotDao();
+                dao.deleteAll();
+
+                TimeSlot timeSlot = new TimeSlot("Lundi", "midi", "Poulet frite");
+                dao.insert(timeSlot);
+                timeSlot = new TimeSlot("Mardi", "midi", "Poulet frite");
+                dao.insert(timeSlot);
+                timeSlot = new TimeSlot("Mercredi", "midi", "Poulet frite");
+                dao.insert(timeSlot);
             });
         }
     };
