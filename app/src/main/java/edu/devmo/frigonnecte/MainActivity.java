@@ -1,6 +1,8 @@
 package edu.devmo.frigonnecte;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -32,4 +34,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    public void clickImage(View view) {
+        Log.i("oui", "c'est oui");
+    }
 }
