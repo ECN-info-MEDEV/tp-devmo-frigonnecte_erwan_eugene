@@ -8,7 +8,7 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:background="@color/purple_500"
         android:backgroundTint="#673AB7"
         android:text="Button" />
 </LinearLayout>
